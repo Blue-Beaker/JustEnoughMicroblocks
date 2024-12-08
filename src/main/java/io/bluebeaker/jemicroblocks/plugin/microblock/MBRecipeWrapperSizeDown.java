@@ -19,14 +19,12 @@ public class MBRecipeWrapperSizeDown extends MBRecipeWrapperBase {
 
     public MBRecipeWrapperSizeDown(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input) {
         super(jeiHelpers, material, input);
+        outputSize=2;
     }
 
     @Override
     public void processItems() {
         this.output=new MicroBlockShape(this.input.shape,this.input.size/2);
-
-        inputStack = createMicroblockStack(1,this.input);
-        outputStack = createMicroblockStack(2,this.output);
     }
 
     @Override

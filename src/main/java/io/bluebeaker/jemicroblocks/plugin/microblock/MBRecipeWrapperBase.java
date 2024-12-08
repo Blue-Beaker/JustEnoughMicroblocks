@@ -25,15 +25,22 @@ public abstract class MBRecipeWrapperBase implements IShapedCraftingRecipeWrappe
 
 	public ItemStack inputStack;
 	public ItemStack outputStack;
+	public int outputSize = 1;
 
 	public MBRecipeWrapperBase(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input) {
 		this.jeiHelpers = jeiHelpers;
 		this.material = material;
 		this.input=input;
 		this.processItems();
+		this.makeItemStacks();
 	}
 
 	public abstract void processItems();
+
+	public void makeItemStacks(){
+		inputStack = createMicroblockStack(1,this.input);
+		outputStack = createMicroblockStack(2,this.output);
+	}
 
 	@Override
 	public abstract void getIngredients(IIngredients ingredients);

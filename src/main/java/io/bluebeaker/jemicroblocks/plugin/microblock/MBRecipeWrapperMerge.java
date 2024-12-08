@@ -28,9 +28,6 @@ public class MBRecipeWrapperMerge extends MBRecipeWrapperBase {
             this.output=new MicroBlockShape(this.input.shape.shapeUp(),this.input.size);
         else
             this.output=new MicroBlockShape(this.input.shape,this.input.size*2);
-
-        inputStack = createMicroblockStack(1,this.input);
-        outputStack = createMicroblockStack(1,this.output);
     }
 
     @Override
