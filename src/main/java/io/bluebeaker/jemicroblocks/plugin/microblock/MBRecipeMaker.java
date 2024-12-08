@@ -1,8 +1,5 @@
 package io.bluebeaker.jemicroblocks.plugin.microblock;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import codechicken.microblock.IMicroMaterial;
 import codechicken.microblock.MicroMaterialRegistry;
 import io.bluebeaker.jemicroblocks.utils.MicroBlockShape;
@@ -10,6 +7,9 @@ import io.bluebeaker.jemicroblocks.utils.Shape;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import scala.Tuple2;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MBRecipeMaker {
 
@@ -36,8 +36,8 @@ public class MBRecipeMaker {
 				for (int i :new int[]{1,2,4}) {
 					if(shape.canShapeDown()){
 						recipes.add(new MBRecipeWrapperShapeDown(jeiHelpers, item._2(), new MicroBlockShape(shape,i)));
-						recipes.add(new MBRecipeWrapperMerge(jeiHelpers, item._2(), new MicroBlockShape(shape,i)));
 					}
+					recipes.add(new MBRecipeWrapperMerge(jeiHelpers, item._2(), new MicroBlockShape(shape,i)));
 				}
 			}
 		}
