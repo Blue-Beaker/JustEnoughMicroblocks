@@ -1,10 +1,7 @@
 package io.bluebeaker.jemicroblocks.plugin.microblock;
 
 import codechicken.microblock.IMicroMaterial;
-import codechicken.microblock.ItemMicroPart;
 import io.bluebeaker.jemicroblocks.utils.MicroBlockShape;
-import io.bluebeaker.jemicroblocks.utils.Shape;
-import io.bluebeaker.jemicroblocks.utils.ShapeUtils;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;

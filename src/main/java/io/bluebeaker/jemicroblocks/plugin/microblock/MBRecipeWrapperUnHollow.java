@@ -2,6 +2,7 @@ package io.bluebeaker.jemicroblocks.plugin.microblock;
 
 import codechicken.microblock.IMicroMaterial;
 import io.bluebeaker.jemicroblocks.utils.MicroBlockShape;
+import io.bluebeaker.jemicroblocks.utils.Shape;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
@@ -12,16 +13,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MBRecipeWrapperShapeDown extends MBRecipeWrapperBase {
+public class MBRecipeWrapperUnHollow extends MBRecipeWrapperBase {
 
-    public MBRecipeWrapperShapeDown(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input) {
+    public MBRecipeWrapperUnHollow(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input) {
         super(jeiHelpers, material, input);
-        outputSize=2;
+        outputSize=1;
     }
 
     @Override
     public void processItems() {
-        this.output=new MicroBlockShape(this.input.shape.shapeDown(),this.input.size);
+        this.output=new MicroBlockShape(Shape.FACE,this.input.size);
     }
 
     @Override
@@ -29,10 +30,11 @@ public class MBRecipeWrapperShapeDown extends MBRecipeWrapperBase {
 
         try {
             List<List<ItemStack>> inputLists = new ArrayList<>();
-            inputLists.add(this.getValidSaws());
+
             inputLists.add(Collections.singletonList(inputStack));
 
             ingredients.setInputLists(VanillaTypes.ITEM, inputLists);
+
             ingredients.setOutput(VanillaTypes.ITEM, outputStack);
         } catch (RuntimeException e) {
             String info = "Error creating microblock recipe for "+this.material.getMaterialID();
@@ -42,7 +44,7 @@ public class MBRecipeWrapperShapeDown extends MBRecipeWrapperBase {
 
     @Override
     public int getWidth() {
-        return 2;
+        return 1;
     }
 
     @Override
