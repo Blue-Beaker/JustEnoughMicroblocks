@@ -13,22 +13,38 @@ import java.util.Collections;
 import java.util.List;
 
 public class MBRecipeWrapperMerge extends MBRecipeWrapperBase {
-
+    private int count;
+    private int outputSize;
     public MBRecipeWrapperMerge(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input) {
         super(jeiHelpers, material, input);
+        this.count=2;
+        this.init();
+    }
+    public MBRecipeWrapperMerge(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input, int count) {
+        super(jeiHelpers, material, input);
+        this.count=count;
+        this.init();
     }
 
     @Override
     public void processItems() {
-        if(this.input.shape.canShapeUp())
-            this.output=new MicroBlockShape(this.input.shape.shapeUp(),this.input.size);
-        else
-            this.output=new MicroBlockShape(this.input.shape,this.input.size*2);
+        if(this.input.shape.canShapeUp()){
+            this.output=new MicroBlockShape(count==4?this.input.shape.shapeUp().shapeUp():this.input.shape.shapeUp(),this.input.size);
+            this.outputSize = 1;
+        } else {
+            if (count == 6) {
+                this.output = new MicroBlockShape(this.input.shape, this.input.size * 2);
+                this.outputSize = 3;
+            } else {
+                this.output = new MicroBlockShape(this.input.shape, this.input.size * count);
+                this.outputSize = 1;
+            }
+        }
     }
 
     @Override
     public int getOutputSize() {
-        return 1;
+        return this.outputSize;
     }
 
     @Override
@@ -37,8 +53,9 @@ public class MBRecipeWrapperMerge extends MBRecipeWrapperBase {
         try {
             List<List<ItemStack>> inputLists = new ArrayList<>();
 
-            inputLists.add(Collections.singletonList(inputStack));
-            inputLists.add(Collections.singletonList(inputStack));
+            for (int i = 0; i < count; i++) {
+                inputLists.add(Collections.singletonList(inputStack));
+            }
 
             ingredients.setInputLists(VanillaTypes.ITEM, inputLists);
 
@@ -51,13 +68,14 @@ public class MBRecipeWrapperMerge extends MBRecipeWrapperBase {
 
     @Override
     public int getWidth() {
-        return 2;
+        return this.count<=4 ? 2 : 3;
     }
 
     @Override
     public int getHeight() {
-        return 1;
+        return this.count<=4 ? 2 : 3;
     }
+
     @Override
     public boolean isShapeless(){
         return true;

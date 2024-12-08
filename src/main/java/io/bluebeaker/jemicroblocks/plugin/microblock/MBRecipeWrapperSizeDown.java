@@ -16,6 +16,7 @@ public class MBRecipeWrapperSizeDown extends MBRecipeWrapperBase {
 
     public MBRecipeWrapperSizeDown(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input) {
         super(jeiHelpers, material, input);
+        this.init();
     }
 
     @Override

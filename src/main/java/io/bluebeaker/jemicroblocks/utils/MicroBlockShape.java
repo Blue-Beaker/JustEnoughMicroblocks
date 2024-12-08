@@ -19,4 +19,7 @@ public class MicroBlockShape {
     public int getMeta(){
         return (shape.ordinal()<<8) | Math.max(size & 7,1);
     }
+    public String toString(){
+        return "MicroBlockShape "+this.shape.name()+" Size "+this.size;
+    }
 }

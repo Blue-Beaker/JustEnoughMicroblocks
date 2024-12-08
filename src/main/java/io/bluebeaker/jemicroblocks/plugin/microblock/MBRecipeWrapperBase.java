@@ -3,6 +3,7 @@ package io.bluebeaker.jemicroblocks.plugin.microblock;
 import codechicken.microblock.IMicroMaterial;
 import codechicken.microblock.ItemMicroPart;
 import codechicken.microblock.ItemSaw;
+import io.bluebeaker.jemicroblocks.JEMicroblocks;
 import io.bluebeaker.jemicroblocks.utils.MicroBlockShape;
 import io.bluebeaker.jemicroblocks.utils.MicroblockProxyUtils;
 import mezz.jei.api.IJeiHelpers;
@@ -27,6 +28,9 @@ public abstract class MBRecipeWrapperBase implements IShapedCraftingRecipeWrappe
 		this.jeiHelpers = jeiHelpers;
 		this.material = material;
 		this.input=input;
+	}
+
+	public void init(){
 		this.processItems();
 		this.makeItemStacks();
 	}
@@ -58,9 +62,12 @@ public abstract class MBRecipeWrapperBase implements IShapedCraftingRecipeWrappe
 
 	public ItemStack createMicroblockStack(int amount,MicroBlockShape shape){
 		ItemStack stack;
-		if(!shape.isValid())
-			stack = shape.isFullBlock() ? this.material.getItem() : ItemStack.EMPTY;
-		else
+		if(shape.isFullBlock())
+			stack = this.material.getItem();
+		else if(!shape.isValid()){
+			stack = ItemStack.EMPTY;
+			JEMicroblocks.getLogger().error("Error when making stack for recipe: "+shape.toString());
+		} else
 			stack = ItemMicroPart.createStack(amount,shape.getMeta(),this.material.getMaterialID());
 		return stack;
 	}

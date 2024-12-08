@@ -17,6 +17,7 @@ public class MBRecipeWrapperHollow extends MBRecipeWrapperBase {
 
     public MBRecipeWrapperHollow(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input) {
         super(jeiHelpers, material, input);
+        this.init();
     }
 
     @Override
