@@ -1,20 +1,18 @@
 package io.bluebeaker.jemicroblocks.plugin.microblock;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import codechicken.microblock.IMicroMaterial;
 import codechicken.microblock.ItemMicroPart;
 import codechicken.microblock.ItemSaw;
-import codechicken.microblock.handler.MicroblockProxy$;
 import io.bluebeaker.jemicroblocks.utils.MicroBlockShape;
+import io.bluebeaker.jemicroblocks.utils.MicroblockProxyUtils;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import scala.collection.JavaConversions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class MBRecipeWrapperBase implements IShapedCraftingRecipeWrapper {
 
@@ -46,10 +44,9 @@ public abstract class MBRecipeWrapperBase implements IShapedCraftingRecipeWrappe
 	public abstract void getIngredients(IIngredients ingredients);
 
 	public List<ItemStack> getValidSaws(){
-		List<Item> saws = JavaConversions.mutableSeqAsJavaList(MicroblockProxy$.MODULE$.saws());
 		List<ItemStack> sawStacks = new ArrayList<>();
 
-		for(Item saw : saws){
+		for(Item saw : MicroblockProxyUtils.getSaws()){
 			if(saw instanceof ItemSaw){
 				if(((ItemSaw)saw).harvestLevel()>=this.material.getCutterStrength()){
 					sawStacks.add(new ItemStack(saw));

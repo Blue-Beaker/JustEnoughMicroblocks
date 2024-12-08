@@ -1,7 +1,5 @@
 package io.bluebeaker.jemicroblocks.plugin.microblock;
 
-import java.util.List;
-
 import codechicken.microblock.handler.MicroblockProxy$;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
@@ -18,9 +16,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class MBRecipeCategory implements IRecipeCategory<IRecipeWrapper> {
     static IJeiHelpers jeiHelpers;
+
 	private static final int craftOutputSlot = 0;
 	private static final int craftInputSlot1 = 1;
     public static final String UID = "jemicroblocks.microblock";
