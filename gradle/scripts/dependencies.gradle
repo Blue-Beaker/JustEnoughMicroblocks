@@ -33,6 +33,11 @@ repositories {
         name = "BlameJared Maven"
         url = "https://maven.blamejared.com"
     }
+    maven {
+        // ForgeMultipart CBE
+        name = "covers1624 Maven"
+        url = "https://maven.covers1624.net"
+    }
     mavenLocal() // Must be last for caching to work
 }
 
@@ -44,7 +49,11 @@ dependencies {
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
     runtimeOnly rfg.deobf('curse.maven:ftb-library-legacy-forge-237167:2985811')
     runtimeOnly rfg.deobf('curse.maven:ftb-utilities-forge-237102:3157548')
-    
+
+    // implementation ("codechicken:ForgeMultipart:1.12-2.3.0.51:sources")
+    // implementation rfg.deobf('codechicken:ForgeMultipart:1.12-2.3.0.51:universal')
+    // implementation rfg.deobf("codechicken:ChickenASM:1.12-1.0.2.7")
+    // implementation rfg.deobf("codechicken:CodeChickenLib:1.12-3.1.5.330:universal")
     implementation rfg.deobf('libs:CodeChickenLib-1.12.2-3.2.3.358-universal')
     implementation rfg.deobf('libs:ForgeMultipart-1.12.2-2.6.2.83-universal')
     implementation rfg.deobf('libs:ChickenASM-1.12-1.0.2.7')
