@@ -20,10 +20,8 @@ public abstract class MBRecipeWrapperBase implements IShapedCraftingRecipeWrappe
 	protected final IMicroMaterial material;
 	public MicroBlockShape input;
 	public MicroBlockShape output;
-
 	public ItemStack inputStack;
 	public ItemStack outputStack;
-	public int outputSize = 1;
 
 	public MBRecipeWrapperBase(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input) {
 		this.jeiHelpers = jeiHelpers;
@@ -35,9 +33,11 @@ public abstract class MBRecipeWrapperBase implements IShapedCraftingRecipeWrappe
 
 	public abstract void processItems();
 
+	public abstract int getOutputSize();
+
 	public void makeItemStacks(){
 		inputStack = createMicroblockStack(1,this.input);
-		outputStack = createMicroblockStack(2,this.output);
+		outputStack = createMicroblockStack(this.getOutputSize(),this.output);
 	}
 
 	@Override
@@ -71,5 +71,8 @@ public abstract class MBRecipeWrapperBase implements IShapedCraftingRecipeWrappe
 
 	public int getHeight(){
 		return 0;
+	}
+	public boolean isShapeless(){
+		return false;
 	}
 }

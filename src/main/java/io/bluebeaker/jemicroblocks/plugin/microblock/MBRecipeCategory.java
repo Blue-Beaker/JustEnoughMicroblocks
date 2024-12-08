@@ -66,6 +66,8 @@ public class MBRecipeCategory implements IRecipeCategory<IRecipeWrapper> {
 		if (recipeWrapper instanceof MBRecipeWrapperBase) {
 			MBRecipeWrapperBase rw = (MBRecipeWrapperBase)recipeWrapper;
 			craftingGridHelper.setInputs(guiItemStacks, inputs, rw.getWidth(), rw.getHeight());
+			if(rw.isShapeless())
+				recipeLayout.setShapeless();
 		}
 		guiItemStacks.set(craftOutputSlot, outputs.get(0));
     }

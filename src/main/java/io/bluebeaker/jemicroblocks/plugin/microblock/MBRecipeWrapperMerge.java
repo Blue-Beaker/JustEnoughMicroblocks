@@ -27,6 +27,11 @@ public class MBRecipeWrapperMerge extends MBRecipeWrapperBase {
     }
 
     @Override
+    public int getOutputSize() {
+        return 1;
+    }
+
+    @Override
     public void getIngredients(IIngredients ingredients) {
 
         try {
@@ -52,5 +57,9 @@ public class MBRecipeWrapperMerge extends MBRecipeWrapperBase {
     @Override
     public int getHeight() {
         return 1;
+    }
+    @Override
+    public boolean isShapeless(){
+        return true;
     }
 }

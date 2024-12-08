@@ -16,7 +16,6 @@ public class MBRecipeWrapperShapeDown extends MBRecipeWrapperBase {
 
     public MBRecipeWrapperShapeDown(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input) {
         super(jeiHelpers, material, input);
-        outputSize=2;
     }
 
     @Override
@@ -48,5 +47,10 @@ public class MBRecipeWrapperShapeDown extends MBRecipeWrapperBase {
     @Override
     public int getHeight() {
         return 1;
+    }
+
+    @Override
+    public int getOutputSize() {
+        return 2;
     }
 }

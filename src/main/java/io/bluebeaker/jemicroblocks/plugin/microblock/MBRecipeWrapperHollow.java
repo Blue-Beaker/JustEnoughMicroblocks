@@ -17,7 +17,6 @@ public class MBRecipeWrapperHollow extends MBRecipeWrapperBase {
 
     public MBRecipeWrapperHollow(IJeiHelpers jeiHelpers, IMicroMaterial material, MicroBlockShape input) {
         super(jeiHelpers, material, input);
-        outputSize=8;
     }
 
     @Override
@@ -58,5 +57,10 @@ public class MBRecipeWrapperHollow extends MBRecipeWrapperBase {
     @Override
     public int getHeight() {
         return 3;
+    }
+
+    @Override
+    public int getOutputSize() {
+        return 8;
     }
 }
