@@ -1,1 +1,4 @@
 category.jemicroblocks.microblock=Microblock Crafting
+
+config.jemicroblocks.show_less.name=Show Less Recipes
+config.jemicroblocks.shown_blocks.name=Blocks to show
