@@ -1,6 +1,8 @@
-package io.bluebeaker.jemicroblocks.plugin.microblock;
+package io.bluebeaker.jemicroblocks.plugin;
 
 import codechicken.microblock.handler.MicroblockProxy$;
+import io.bluebeaker.jemicroblocks.JEMicroblocks;
+import io.bluebeaker.jemicroblocks.plugin.microblock.MBRecipeWrapperBase;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.gui.ICraftingGridHelper;
@@ -84,7 +86,7 @@ public class MBRecipeCategory implements IRecipeCategory<IRecipeWrapper> {
 
 	@Override
 	public String getModName() {
-		return "microblockcbe";
+		return JEMicroblocks.MODID;
 	}
 
 	@Override

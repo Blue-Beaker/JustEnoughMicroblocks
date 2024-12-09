@@ -1,8 +1,9 @@
-package io.bluebeaker.jemicroblocks.plugin.microblock;
+package io.bluebeaker.jemicroblocks.plugin;
 
 import codechicken.microblock.IMicroMaterial;
 import codechicken.microblock.MicroMaterialRegistry;
 import io.bluebeaker.jemicroblocks.JEMicroblocksConfig;
+import io.bluebeaker.jemicroblocks.plugin.microblock.*;
 import io.bluebeaker.jemicroblocks.utils.MicroBlockShape;
 import io.bluebeaker.jemicroblocks.utils.Shape;
 import mezz.jei.api.IJeiHelpers;

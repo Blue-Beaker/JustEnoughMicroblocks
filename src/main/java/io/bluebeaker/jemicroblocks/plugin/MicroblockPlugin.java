@@ -1,13 +1,16 @@
 package io.bluebeaker.jemicroblocks.plugin;
 
 import codechicken.microblock.handler.MicroblockProxy$;
+import com.google.common.collect.ImmutableTable;
 import io.bluebeaker.jemicroblocks.JEMicroblocks;
-import io.bluebeaker.jemicroblocks.plugin.microblock.MBRecipeCategory;
-import io.bluebeaker.jemicroblocks.plugin.microblock.MBRecipeMaker;
 import io.bluebeaker.jemicroblocks.utils.MicroblockProxyUtils;
 import mezz.jei.api.*;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
+import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
+import mezz.jei.api.recipe.transfer.IRecipeTransferHandler;
+import mezz.jei.recipes.RecipeTransferRegistry;
 import mezz.jei.transfer.PlayerRecipeTransferHandler;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ContainerWorkbench;
@@ -44,11 +47,14 @@ public class MicroblockPlugin implements IModPlugin {
         modRegistry = registry;
         JEMicroblocks.getLogger().info("Started loading Microblock recipes...");
         registry.addRecipes(MBRecipeMaker.getRecipes(jeiHelpers), MBRecipeCategory.UID);
-        registry.addRecipeCatalyst(new ItemStack(Blocks.CRAFTING_TABLE), MBRecipeCategory.UID);
+        JEMicroblocks.getLogger().info("Loaded Microblock recipes!");
+
+
+        // Add category catalysts
+        modRegistry.addRecipeCatalyst(new ItemStack(Blocks.CRAFTING_TABLE), MBRecipeCategory.UID);
         for (Item saw : MicroblockProxyUtils.getSaws()) {
             registry.addRecipeCatalyst(new ItemStack(saw), MBRecipeCategory.UID);
         }
-        JEMicroblocks.getLogger().info("Loaded MB recipes!");
 
         modRegistry.getRecipeTransferRegistry().addRecipeTransferHandler(ContainerWorkbench.class, MBRecipeCategory.UID, 1, 9, 10, 36);
         modRegistry.getRecipeTransferRegistry().addRecipeTransferHandler(new PlayerRecipeTransferHandler(jeiHelpers.recipeTransferHandlerHelper()), MBRecipeCategory.UID);
@@ -57,6 +63,7 @@ public class MicroblockPlugin implements IModPlugin {
     @Override
     public void onRuntimeAvailable(IJeiRuntime jeiRuntimeIn) {
         MicroblockPlugin.jeiRuntime = jeiRuntimeIn;
+
     }
 
     public static void setFilterText(@Nonnull String filterText) {

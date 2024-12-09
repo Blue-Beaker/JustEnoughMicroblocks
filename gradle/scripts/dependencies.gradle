@@ -58,6 +58,9 @@ dependencies {
     implementation rfg.deobf('libs:ForgeMultipart-1.12.2-2.6.2.83-universal')
     implementation rfg.deobf('libs:ChickenASM-1.12-1.0.2.7')
 
+
+    runtimeOnly rfg.deobf("curse.maven:forestry-59751:2918418")
+
     // Crafttweaker
     //implementation rfg.deobf("curse.maven:mtlib-253211:3308160")
     //implementation rfg.deobf("CraftTweaker2:CraftTweaker2-MC1120-Main:${project.version_crafttweaker}")
